@@ -1,0 +1,64 @@
+import { Component } from '@angular/core';
+import { RasediClient, Gateway } from 'rasedi-sdk';
+
+const secretKey =
+  'live_laisxVjnNnoY1w5mwWP6YwzfPg_zmu2BnWnJH1uCOzOGcAflAYShdjVPuDAG10DLSEpTOlsOopiyTJHJjO4fbqqU';
+const privateKey = `-----BEGIN PRIVATE KEY-----
+MC4CAQAwBQYDK2VwBCIEID2nK2pCcGSbtS+U9jc2SCYxHWOo1eA4IR97bdif4+rx
+-----END PRIVATE KEY-----`;
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  template: `
+    <div style="padding: 20px;">
+      <h1>Rasedi SDK Angular Test</h1>
+      <button (click)="runTest()">Run SDK Test</button>
+      <pre
+        style="margin-top: 20px; background: #333; color: #fff; padding: 10px; border-radius: 5px; white-space: pre-wrap; text-align: left;"
+        >{{ output }}</pre
+      >
+    </div>
+  `,
+})
+export class App {
+  output = 'Click button to start test';
+
+  async runTest() {
+    this.output = 'Initializing Client...';
+    try {
+      const client = new RasediClient(privateKey, secretKey);
+      this.output += '\nCreating Payment...';
+
+      const payment = await client.createPayment({
+        amount: '10500',
+        title: 'Test Angular SDK',
+        description: 'Testing Universal JS SDK',
+        gateways: [Gateway.CREDIT_CARD],
+        redirectUrl: 'https://example.com/callback',
+        callbackUrl: 'https://example.com/webhook',
+        collectFeeFromCustomer: true,
+        collectCustomerEmail: true,
+        collectCustomerPhoneNumber: false,
+      });
+
+      this.output += `\nPayment Created: ${payment.body.referenceCode}\nStatus: ${payment.body.status}`;
+
+      if (payment.body.referenceCode) {
+        this.output += '\nFetching Payment...';
+        const details = await client.getPaymentByReference(payment.body.referenceCode);
+        this.output += `\nFetched Status: ${details.body.status}`;
+
+        this.output += '\nCancelling Payment...';
+        const ignored = await client.cancelPayment(payment.body.referenceCode);
+        this.output += `\nCancelled Status: ${ignored.body.status}`;
+      }
+    } catch (error: any) {
+      console.error(error);
+      this.output += `\nError: ${error.message || error}`;
+      if (error.response) {
+        this.output += `\nResponse Data: ${JSON.stringify(error.response.data)}`;
+      }
+    }
+  }
+}

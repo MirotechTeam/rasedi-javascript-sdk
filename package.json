@@ -1,0 +1,55 @@
+{
+  "name": "rasedi-sdk",
+  "version": "1.0.1",
+  "description": "Universal Rasedi Payment Gateway SDK for React, Vue, Angular, React Native",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "ts-node test/example.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "rasedi",
+    "payment",
+    "sdk",
+    "react",
+    "vue",
+    "angular",
+    "react-native",
+    "mirotech",
+    "rasedi-sdk",
+    "sdk",
+    "api",
+    "rest"
+  ],
+  "author": "MirotechTeam",
+  "license": "MIT",
+  "dependencies": {
+    "@noble/ed25519": "^2.0.0",
+    "@noble/hashes": "^2.0.1",
+    "axios": "^1.6.0",
+    "buffer": "^6.0.3",
+    "elliptic": "^6.5.4",
+    "node-forge": "^1.3.1"
+  },
+  "devDependencies": {
+    "@types/elliptic": "^6.4.14",
+    "@types/node": "^20.0.0",
+    "@types/node-forge": "^1.3.0",
+    "ts-node": "^10.9.1",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0"
+  }
+}
