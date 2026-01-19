@@ -2,6 +2,10 @@
 
 Universal Rasedi Payment Gateway SDK for React, Vue, Angular, React Native, and Node.js.
 
+## Github Repository
+
+Check the [Github Repository](https://github.com/MirotechTeam/rasedi-javascript-sdk) for full implementations:
+
 ## Installation
 
 ```bash
