@@ -1,11 +1,11 @@
 node_modules
-dist
+build
 .vscode
 PUBLISHING.md
 .angular
 
 # Compiled output
-/dist
+/build
 /tmp
 /out-tsc
 /bazel-out

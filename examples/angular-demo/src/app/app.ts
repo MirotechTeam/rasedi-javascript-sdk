@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { RasediClient, Gateway } from 'rasedi-sdk';
 
 const secretKey =
@@ -24,11 +24,16 @@ MC4CAQAwBQYDK2VwBCIEIIw8bEIM1U1FpNWRJETIzfN7DD9o0oswJEbbekYTDimk
 export class App {
   output = 'Click button to start test';
 
+  constructor(private cdr: ChangeDetectorRef) {}
+
   async runTest() {
     this.output = 'Initializing Client...';
+    this.cdr.detectChanges();
+
     try {
       const client = new RasediClient(privateKey, secretKey);
       this.output += '\nCreating Payment...';
+      this.cdr.detectChanges();
 
       const payment = await client.createPayment({
         amount: '10500',
@@ -43,15 +48,22 @@ export class App {
       });
 
       this.output += `\nPayment Created: ${payment.body.referenceCode}\nStatus: ${payment.body.status}`;
+      this.cdr.detectChanges();
 
       if (payment.body.referenceCode) {
         this.output += '\nFetching Payment...';
+        this.cdr.detectChanges();
+
         const details = await client.getPaymentByReference(payment.body.referenceCode);
         this.output += `\nFetched Status: ${details.body.status}`;
+        this.cdr.detectChanges();
 
         this.output += '\nCancelling Payment...';
+        this.cdr.detectChanges();
+
         const ignored = await client.cancelPayment(payment.body.referenceCode);
         this.output += `\nCancelled Status: ${ignored.body.status}`;
+        this.cdr.detectChanges();
       }
     } catch (error: any) {
       console.error(error);
@@ -59,6 +71,7 @@ export class App {
       if (error.response) {
         this.output += `\nResponse Data: ${JSON.stringify(error.response.data)}`;
       }
+      this.cdr.detectChanges();
     }
   }
 }
