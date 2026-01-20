@@ -1,6 +1,6 @@
 # Rasedi SDK
 
-Universal Rasedi Payment Gateway SDK for React, Vue, Angular, React Native, and Node.js.
+Universal Rasedi Payment Gateway SDK for React, Vue, Angular, React Native
 
 ## Github Repository
 
@@ -104,7 +104,6 @@ Check the `examples` directory for full implementations:
 - **[Vue](./examples/vue-demo)**
 - **[Angular](./examples/angular-demo)**
 - **[React Native](./examples/react-native-demo)**
-- **[Node.js](./examples/node-demo)**
 
 ## License
 
