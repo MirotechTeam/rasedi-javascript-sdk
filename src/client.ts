@@ -8,7 +8,7 @@ import {
 import { PaymentStatus } from "./enums";
 
 export class RasediClient {
-  private static readonly API_BASE_URL = "https://stage.api.rasedi.com";
+  private static readonly API_BASE_URL = "https://api.rasedi.com";
   private static readonly UPSTREAM_VERSION = 1;
 
   private auth: Auth;
