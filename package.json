@@ -1,6 +1,6 @@
 {
   "name": "rasedi-sdk",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Universal Rasedi Payment Gateway SDK for React, Vue, Angular, React Native, and Node.js",
   "publishConfig": {
     "access": "public"
