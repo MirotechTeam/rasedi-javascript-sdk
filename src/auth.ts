@@ -1,6 +1,8 @@
 import forge from "node-forge";
-import { ec as EC } from "elliptic";
+import elliptic from "elliptic";
 import * as ed from "@noble/ed25519";
+
+const EC = elliptic.ec;
 import { Buffer } from "buffer";
 import { sha512 } from "@noble/hashes/sha2.js";
 

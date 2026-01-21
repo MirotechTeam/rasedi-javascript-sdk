@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { RasediClient, Gateway } from 'rasedi-sdk';
 
-const secretKey = "live_lais4GLfbqmY7hTyRsSs_aEMJ-oMnQk2BtyvCtcprZDhBMh6zTttXUROaTH9ajXnL0r3hIESJ1nRTxUO12jeL-Ay";
+const secretKey =
+  "live_lais4GLfbqmY7hTyRsSs_aEMJ-oMnQk2BtyvCtcprZDhBMh6zTttXUROaTH9ajXnL0r3hIESJ1nRTxUO12jeL-Ay";
 const privateKey = `-----BEGIN PRIVATE KEY-----
 MC4CAQAwBQYDK2VwBCIEIIw8bEIM1U1FpNWRJETIzfN7DD9o0oswJEbbekYTDimk
 -----END PRIVATE KEY-----`;
