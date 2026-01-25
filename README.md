@@ -98,12 +98,13 @@ Possible states of a payment:
 
 ## Examples
 
-Check the `examples` directory for full implementations:
+Check the `repository` for full implementations:
 
-- **[React](./examples/react-demo)**
-- **[Vue](./examples/vue-demo)**
-- **[Angular](./examples/angular-demo)**
-- **[React Native](./examples/react-native-demo)**
+- **[Angular](https://github.com/MirotechTeam/rasedi-javascript-sdk/tree/main/examples/angular-demo)**
+- **[Node.js (Express)](https://github.com/MirotechTeam/rasedi-javascript-sdk/tree/main/examples/nodejs-express-demo)**
+- **[React](https://github.com/MirotechTeam/rasedi-javascript-sdk/tree/main/examples/react-demo)**
+- **[React Native](https://github.com/MirotechTeam/rasedi-javascript-sdk/tree/main/examples/react-native-demo)**
+- **[Vue](https://github.com/MirotechTeam/rasedi-javascript-sdk/tree/main/examples/vue-demo)**
 
 ## License
 

@@ -28,9 +28,7 @@ cp .env.example .env
 Edit `.env` and add your Rasedi API credentials:
 
 ```env
-RASEDI_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----
-your-private-key-here
------END PRIVATE KEY-----"
+RASEDI_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----your-private-key-here-----END PRIVATE KEY-----"
 
 RASEDI_SECRET_KEY="test_your_secret_key_here"
 ```
@@ -72,11 +70,12 @@ Content-Type: application/json
 {
   "success": true,
   "data": {
-    "referenceCode": "PAY-ABC123",
-    "redirectUrl": "https://pay.rasedi.com/PAY-ABC123",
+    "referenceCode": "e3472-4ad45...",
+    "redirectUrl": "https://your-site.com/e3472-4ad45...",
     "status": "PENDING",
     "amount": "1010"
   }
+  
 }
 ```
 
@@ -91,7 +90,8 @@ GET /api/payments/:referenceCode
 {
   "success": true,
   "data": {
-    "referenceCode": "PAY-ABC123",
+    "referenceCode": "e3472-4ad45...
+    ",
     "amount": "1010",
     "status": "PAID",
     "paidVia": "FIB",
@@ -120,10 +120,10 @@ curl -X POST http://localhost:3000/api/payments \
   }'
 
 # Get payment status
-curl http://localhost:3000/api/payments/PAY-ABC123
+curl http://localhost:3000/api/payments/{reference-code}
 
 # Cancel payment
-curl -X DELETE http://localhost:3000/api/payments/PAY-ABC123
+curl -X DELETE http://localhost:3000/api/payments/{reference-code}
 ```
 
 ## Available Gateways
