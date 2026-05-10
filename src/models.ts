@@ -12,6 +12,18 @@ export interface CreatePaymentPayload {
   collectCustomerPhoneNumber: boolean;
 }
 
+export interface PaymentHistoryItem {
+  referenceCode: string;
+  status: PaymentStatus;
+  amount: string;
+  gateway?: string;
+  paidAt?: string;
+  payoutAmount?: string;
+  serviceFeeAmount?: string;
+  gatewayFeeAmount?: string;
+  expiresAt?: string;
+}
+
 export interface PaymentResponseBody {
   referenceCode: string;
   amount: string;
@@ -20,6 +32,7 @@ export interface PaymentResponseBody {
   redirectUrl: string;
   status: PaymentStatus;
   payoutAmount?: string;
+  history?: PaymentHistoryItem[];
 }
 
 export interface ApiResponse<T> {
@@ -28,11 +41,13 @@ export interface ApiResponse<T> {
   statusCode: number;
 }
 
+/** @deprecated Use status checking or webhooks instead. */
 export interface VerifyPayload {
   keyId: string;
   content: string;
 }
 
+/** @deprecated Use status checking instead. */
 export interface VerifyResponse {
   isValid: boolean;
   payload?: any;

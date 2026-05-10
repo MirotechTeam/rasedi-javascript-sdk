@@ -34,6 +34,12 @@ function App() {
             setOutput(prev => prev + '\nFetching Payment...');
             const details = await client.getPaymentByReference(payment.body.referenceCode);
             setOutput(prev => prev + `\nFetched Status: ${details.body.status}`);
+            if (details.body.history && details.body.history.length > 0) {
+                setOutput(prev => prev + `\nHistory Items: ${details.body.history.length}`);
+                details.body.history.forEach(item => {
+                    setOutput(prev => prev + `\n  - ${item.status} via ${item.gateway}`);
+                });
+            }
 
              setOutput(prev => prev + '\nCancelling Payment...');
             const ignored = await client.cancelPayment(payment.body.referenceCode);

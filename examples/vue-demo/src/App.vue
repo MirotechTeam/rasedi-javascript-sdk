@@ -36,6 +36,12 @@ const runTest = async () => {
         payment.body.referenceCode,
       );
       output.value += `\nFetched Status: ${details.body.status}`;
+      if (details.body.history && details.body.history.length > 0) {
+        output.value += `\nHistory Items: ${details.body.history.length}`;
+        details.body.history.forEach((item: any) => {
+          output.value += `\n  - ${item.status} via ${item.gateway}`;
+        });
+      }
 
       output.value += "\nCancelling Payment...";
       const ignored = await client.cancelPayment(payment.body.referenceCode);

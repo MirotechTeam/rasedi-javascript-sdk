@@ -56,6 +56,12 @@ export class App {
 
         const details = await client.getPaymentByReference(payment.body.referenceCode);
         this.output += `\nFetched Status: ${details.body.status}`;
+        if (details.body.history && details.body.history.length > 0) {
+          this.output += `\nHistory Items: ${details.body.history.length}`;
+          details.body.history.forEach((item: any) => {
+            this.output += `\n  - ${item.status} via ${item.gateway}`;
+          });
+        }
         this.cdr.detectChanges();
 
         this.output += '\nCancelling Payment...';

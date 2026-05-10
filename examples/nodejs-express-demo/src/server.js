@@ -150,6 +150,7 @@ app.get("/api/payments/:referenceCode", async (req, res) => {
       data: {
         referenceCode: response.body.referenceCode,
         status: response.body.status,
+        history: response.body.history || [],
       },
     });
   } catch (error) {

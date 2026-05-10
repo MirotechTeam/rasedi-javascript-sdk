@@ -88,10 +88,10 @@ export class RasediClient {
     return this.call<PaymentResponseBody>(`/cancel/${referenceCode}`, "PATCH");
   }
 
-  // Placeholder for verification
+  /** @deprecated Use status checking or webhooks instead. */
   public async verify(payload: any): Promise<any> {
     throw new Error(
-      "Verification not implemented for client-side SDK due to security risks of exposing public keys or logic.",
+      "Verification not implemented for client-side SDK due to security risks of exposing public keys or logic. Use status checking or webhooks instead.",
     );
   }
 }
